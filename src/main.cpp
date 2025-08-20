@@ -107,7 +107,6 @@ void setup()
   Serial.print("Connecting to WiFi network ");
   Serial.println(ssid);
   WiFi.begin(ssid, pass);
-  setLights(1023, 1023, 0, 1023, 1023, 1023,true);
   // Wait for connection
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -115,7 +114,6 @@ void setup()
     delay(100);
   }
   // Print local IP
-  setLights(1023, 0, 1023, 1023, 1023, 1023,true);
   Serial.println("Successfully connected to WiFi");
   Serial.print("Local IP Address: ");
   Serial.println(WiFi.localIP().toString());
@@ -250,7 +248,6 @@ void setup()
       int green = server.arg("green").toInt();
       int blue = server.arg("blue").toInt();
       int white = server.arg("white").toInt();
-
       if (0 <= motorspeed && motorspeed <= 1023 && 0 <= brightness && brightness <= 1023 && 0 <= red && red <= 1023 && 0 <= green && green <= 1023 && 0 <= blue && blue <= 1023 && 0 <= white && white <= 1023){
         setLights(red,green,blue,white,brightness,motorspeed,true);
         server.send(200);
